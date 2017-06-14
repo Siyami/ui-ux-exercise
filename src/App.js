@@ -7,22 +7,52 @@ class App extends Component {
     super(props);
 
     this.state = {
-      value: '10'
+      dropDownValue: 10,
+      addValue: 0,
+      array: [],
+      startVal: 0,
+      endVal: 10
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
 
   handleChange(event) {
     let nextValue = event.target.value;
 
-    this.setState({ value: nextValue });
+    this.setState({ dropDownValue: nextValue });
+  }
+
+  nextPage() {
+    let nextValue = parseInt(this.state.dropDownValue);
+    let newStartVal = this.state.startVal + nextValue;
+    let newEndVal = this.state.endVal + nextValue;
+    console.log('newStartVal: ' + newStartVal);
+    console.log('newEndVal: ' + newEndVal);
+
+    if(newEndVal <= data.length) {
+      this.setState({ startVal: newStartVal, endVal: newEndVal });
+    }
+  }
+
+  prevPage() {
+    let nextValue = parseInt(this.state.dropDownValue);
+    let newStartVal = this.state.startVal - nextValue;
+    let newEndVal = this.state.endVal - nextValue;
+    console.log('newStartVal: ' + newStartVal);
+    console.log('newEndVal: ' + newEndVal);
+
+    if(newStartVal >= 0) {
+      this.setState({ startVal: newStartVal, endVal: newEndVal });
+    }
   }
 
   render() {
-    let itemsPerPage = this.state.value;
     const newArr = [];
-    for (let i = 0; i < itemsPerPage; i++) {
+
+    for (let i = this.state.startVal; i < this.state.endVal; i++) {
       newArr.push(data[i])
     }
 
@@ -31,17 +61,23 @@ class App extends Component {
         items per page:
         <select
           onChange={this.handleChange}
-           value={this.state.value}>
-          <option value="5">5</option>
+           value={this.state.dropDownValue}>
+          {/* <option value="5">5</option> */}
           <option value="10">10</option>
-          <option value="25">25</option>
+          {/* <option value="25">25</option>
           <option value="50">50</option>
           <option value="75">75</option>
-          <option value="100">100</option>
+          <option value="100">100</option> */}
         </select>
+
+        <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
+
+        <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
+
         <table className="table">
           <thead>
             <tr>
+              <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Country</th>
@@ -56,6 +92,7 @@ class App extends Component {
             {newArr.map((row) => {
               return (
                 <tr key={row.firstName + row.lastName}>
+                  <td>{row.number}</td>
                   <td>{row.firstName}</td>
                   <td>{row.lastName}</td>
                   <td>{row.country}</td>
