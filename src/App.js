@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 const data = require('./data.json');
+console.log(data.length);
 
 class App extends Component {
   constructor(props) {
@@ -20,17 +21,24 @@ class App extends Component {
   }
 
   handleChange(event) {
-    let nextValue = event.target.value;
+    let nextValue = parseInt(event.target.value);
+    let newEndVal = nextValue;
+    if(newEndVal < this.state.startVal) {
+      this.setState({ startVal: 0 })
+    }
+    console.log(newEndVal);
 
-    this.setState({ dropDownValue: nextValue });
+    this.setState({ dropDownValue: nextValue, endVal: newEndVal });
+    console.log(this.state.dropDownValue);
+    // let newEndVal = this.state.dropDownValue;
+    //
+    // this.setState({ endVal: newEndVal })
   }
 
   nextPage() {
     let nextValue = parseInt(this.state.dropDownValue);
     let newStartVal = this.state.startVal + nextValue;
     let newEndVal = this.state.endVal + nextValue;
-    console.log('newStartVal: ' + newStartVal);
-    console.log('newEndVal: ' + newEndVal);
 
     if(newEndVal <= data.length) {
       this.setState({ startVal: newStartVal, endVal: newEndVal });
@@ -41,8 +49,6 @@ class App extends Component {
     let nextValue = parseInt(this.state.dropDownValue);
     let newStartVal = this.state.startVal - nextValue;
     let newEndVal = this.state.endVal - nextValue;
-    console.log('newStartVal: ' + newStartVal);
-    console.log('newEndVal: ' + newEndVal);
 
     if(newStartVal >= 0) {
       this.setState({ startVal: newStartVal, endVal: newEndVal });
@@ -62,12 +68,12 @@ class App extends Component {
         <select
           onChange={this.handleChange}
            value={this.state.dropDownValue}>
-          {/* <option value="5">5</option> */}
+          <option value="5">5</option>
           <option value="10">10</option>
-          {/* <option value="25">25</option>
+          <option value="25">25</option>
           <option value="50">50</option>
           <option value="75">75</option>
-          <option value="100">100</option> */}
+          <option value="100">100</option>
         </select>
 
         {this.state.startVal + 1}-{this.state.endVal} of {data.length}
@@ -83,7 +89,7 @@ class App extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Country</th>
-              <th>Address</th>
+              <th>Street</th>
               <th>City</th>
               <th>State</th>
               <th>Zip</th>
