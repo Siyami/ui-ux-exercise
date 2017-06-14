@@ -8,31 +8,31 @@ class App extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Username</th>
+            <th>Country</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {data.map((row) => {
+            return (
+              <tr key={row.firstName + row.lastName}>
+                <td>{row.firstName}</td>
+                <td>{row.lastName}</td>
+                <td>{row.country}</td>
+                <td>{row.address}</td>
+                <td>{row.city}</td>
+                <td>{row.state}</td>
+                <td>{row.zip}</td>
+                <td>{row.phone}</td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     );
