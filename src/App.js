@@ -70,6 +70,8 @@ class App extends Component {
           <option value="100">100</option> */}
         </select>
 
+        {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+
         <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
 
         <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
