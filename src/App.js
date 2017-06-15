@@ -89,59 +89,65 @@ class App extends Component {
         <div className="container">
           <div className="row justify-content-md-center">
             <div className="col col-lg-12">
-              <div>
-                List of Awesome  |  items per page:
-                <select
-                  onChange={this.handleChange}
-                  value={this.state.dropDownValue}>
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="75">75</option>
-                  <option value="100">100</option>
-                </select>
 
-                {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+              <div className="container">
+                <div className="row justify-content-between">
+                  <div className="col-6" style={{color: "#7F56C5"}}>
+                    <p style={{fontSize: "1rem", fontWeight: "400"}}>List of Awesome <span  className="span" style={{fontSize: ".75rem", fontWeight: "400, 600"}}>Sort by:</span></p>
+                  </div>
+                  <div className="col-5" style={{color: "#7F56C5"}}>
+                    items per page:
+                    <select
+                      onChange={this.handleChange}
+                      value={this.state.dropDownValue}>
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="75">75</option>
+                      <option value="100">100</option>
+                    </select>
 
-                <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
+                    {this.state.startVal + 1}-{this.state.endVal} of {data.length}
 
-                <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
+                    <button onClick={this.prevPage} type="button" className="btn btn-primary btn-sm button">Prev</button>
 
-                <table className="table table-striped table-hover">
-                  <thead style={{backgroundColor: "#CACBCE"}}>
-                    <tr>
-                      <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Country</th>
-                      <th>Street</th>
-                      <th>City</th>
-                      <th>State</th>
-                      <th>Zip</th>
-                      <th>Phone</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {newArr.map((row) => {
-                      return (
-                        <tr key={row.firstName + row.lastName}>
-                          <td>{row.number}</td>
-                          <td>{row.firstName}</td>
-                          <td>{row.lastName}</td>
-                          <td>{row.country}</td>
-                          <td>{row.address}</td>
-                          <td>{row.city}</td>
-                          <td>{row.state}</td>
-                          <td>{row.zip}</td>
-                          <td>{row.phone}</td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
+                    <button onClick={this.nextPage} type="button" className="btn btn-primary btn-sm button">Next</button>
+                  </div>
+                </div>
               </div>
-
+              <table className="table table-striped table-hover">
+                <thead style={{backgroundColor: "#CACBCE"}}>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Country</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {newArr.map((row) => {
+                    return (
+                      <tr key={row.firstName + row.lastName}>
+                        <td>{row.number}</td>
+                        <td>{row.firstName}</td>
+                        <td>{row.lastName}</td>
+                        <td>{row.country}</td>
+                        <td>{row.address}</td>
+                        <td>{row.city}</td>
+                        <td>{row.state}</td>
+                        <td>{row.zip}</td>
+                        <td>{row.phone}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
