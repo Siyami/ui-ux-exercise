@@ -105,8 +105,8 @@ class App extends Component {
 
           <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
 
-          <table className="table">
-            <thead>
+          <table className="table table-striped table-hover">
+            <thead style={{backgroundColor: "#CACBCE"}}>
               <tr>
                 <th>#</th>
                 <th>First Name</th>
