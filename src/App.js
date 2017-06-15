@@ -86,58 +86,66 @@ class App extends Component {
           </div>
         </nav>
 
-        <div>
-          List of Awesome  |  items per page:
-          <select
-            onChange={this.handleChange}
-            value={this.state.dropDownValue}>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="75">75</option>
-            <option value="100">100</option>
-          </select>
+        <div className="container">
+          <div className="row justify-content-md-center">
+            <div className="col col-lg-12">
+              <div>
+                List of Awesome  |  items per page:
+                <select
+                  onChange={this.handleChange}
+                  value={this.state.dropDownValue}>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="75">75</option>
+                  <option value="100">100</option>
+                </select>
 
-          {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+                {this.state.startVal + 1}-{this.state.endVal} of {data.length}
 
-          <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
+                <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
 
-          <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
+                <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
 
-          <table className="table table-striped table-hover">
-            <thead style={{backgroundColor: "#CACBCE"}}>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Country</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Phone</th>
-              </tr>
-            </thead>
-            <tbody>
-              {newArr.map((row) => {
-                return (
-                  <tr key={row.firstName + row.lastName}>
-                    <td>{row.number}</td>
-                    <td>{row.firstName}</td>
-                    <td>{row.lastName}</td>
-                    <td>{row.country}</td>
-                    <td>{row.address}</td>
-                    <td>{row.city}</td>
-                    <td>{row.state}</td>
-                    <td>{row.zip}</td>
-                    <td>{row.phone}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+                <table className="table table-striped table-hover">
+                  <thead style={{backgroundColor: "#CACBCE"}}>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Country</th>
+                      <th>Street</th>
+                      <th>City</th>
+                      <th>State</th>
+                      <th>Zip</th>
+                      <th>Phone</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {newArr.map((row) => {
+                      return (
+                        <tr key={row.firstName + row.lastName}>
+                          <td>{row.number}</td>
+                          <td>{row.firstName}</td>
+                          <td>{row.lastName}</td>
+                          <td>{row.country}</td>
+                          <td>{row.address}</td>
+                          <td>{row.city}</td>
+                          <td>{row.state}</td>
+                          <td>{row.zip}</td>
+                          <td>{row.phone}</td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
         </div>
+
 
       </div>
     );
