@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 const data = require('./data.json');
-console.log(data.length);
 
 class App extends Component {
   constructor(props) {
@@ -23,16 +22,12 @@ class App extends Component {
   handleChange(event) {
     let nextValue = parseInt(event.target.value);
     let newEndVal = nextValue;
+
     if(newEndVal < this.state.startVal) {
       this.setState({ startVal: 0 })
     }
-    console.log(newEndVal);
 
     this.setState({ dropDownValue: nextValue, endVal: newEndVal });
-    console.log(this.state.dropDownValue);
-    // let newEndVal = this.state.dropDownValue;
-    //
-    // this.setState({ endVal: newEndVal })
   }
 
   nextPage() {
@@ -65,22 +60,21 @@ class App extends Component {
     return (
       <div>
 
-        <nav className="navbar navbar-toggleable-md navbar-light bg-faded" style={{backgroundColor: "#282653"}}>
+        <nav className="navbar navbar-toggleable-md navbar-light bg-faded" id="nav">
           <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          {/* <a className="navbar-brand" href="#">Navbar</a> */}
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active" style={{backgroundColor: "#7F56C5"}}>
-                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 1<span className="sr-only">(current)</span></a>
+                <a className="nav-link" style={{color: "#FFFFFF"}}>Nav Item 1<span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 2</a>
+                <a className="nav-link" style={{color: "#FFFFFF"}}>Nav Item 2</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 3</a>
+                <a className="nav-link" style={{color: "#FFFFFF"}}>Nav Item 3</a>
               </li>
             </ul>
           </div>
@@ -93,13 +87,14 @@ class App extends Component {
               <div className="container">
                 <div className="row justify-content-between">
                   <div className="col-6" style={{color: "#7F56C5"}}>
-                    <p style={{fontSize: "1rem", fontWeight: "400"}}>List of Awesome <span  className="span" style={{fontSize: ".75rem", fontWeight: "400, 600"}}>Sort by:</span></p>
+                    <p style={{fontSize: "1rem", fontWeight: "400, 600"}}>List of Awesome <span  className="span">Sort by:</span></p>
                   </div>
-                  <div className="col-5" style={{color: "#7F56C5"}}>
-                    items per page:
+                  <div className="col-5" style={{color: "#7F56C5", fontSize: ".75rem", fontWeight: "400, 600"}}>
+                    <span style={{paddingRight: "5px"}}>items per page:</span>
                     <select
                       onChange={this.handleChange}
-                      value={this.state.dropDownValue}>
+                      value={this.state.dropDownValue}
+                      className="select">
                       <option value="5">5</option>
                       <option value="10">10</option>
                       <option value="25">25</option>
@@ -108,16 +103,16 @@ class App extends Component {
                       <option value="100">100</option>
                     </select>
 
-                    {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+                    <span style={{marginLeft: "30px", fontSize: "0.875rem", fontWeight: "700, 400, 700"}}>{this.state.startVal + 1}-{this.state.endVal} of {data.length}</span>
 
-                    <button onClick={this.prevPage} type="button" className="btn btn-primary btn-sm button">Prev</button>
+                    <button onClick={this.prevPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "7px"}}>Prev</button>
 
-                    <button onClick={this.nextPage} type="button" className="btn btn-primary btn-sm button">Next</button>
+                    <button onClick={this.nextPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "3px"}}>Next</button>
                   </div>
                 </div>
               </div>
               <table className="table table-striped table-hover">
-                <thead style={{backgroundColor: "#CACBCE"}}>
+                <thead className="thead" style={{backgroundColor: "#CACBCE"}}>
                   <tr>
                     <th>#</th>
                     <th>First Name</th>
@@ -130,7 +125,7 @@ class App extends Component {
                     <th>Phone</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="tbody">
                   {newArr.map((row) => {
                     return (
                       <tr key={row.firstName + row.lastName}>
@@ -151,8 +146,6 @@ class App extends Component {
             </div>
           </div>
         </div>
-
-
       </div>
     );
   }
