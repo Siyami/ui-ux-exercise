@@ -9,7 +9,6 @@ class App extends Component {
     this.state = {
       dropDownValue: 10,
       addValue: 0,
-      array: [],
       startVal: 0,
       endVal: 10
     };
@@ -59,15 +58,13 @@ class App extends Component {
 
     return (
       <div>
-
         <nav className="navbar navbar-toggleable-md navbar-light bg-faded" id="nav">
           <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active" style={{backgroundColor: "#7F56C5"}}>
+              <li className="nav-item active" style={{backgroundColor: "#7F56C5", marginLeft: "50px"}}>
                 <a className="nav-link" style={{color: "#FFFFFF"}}>Nav Item 1<span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
@@ -79,11 +76,9 @@ class App extends Component {
             </ul>
           </div>
         </nav>
-
         <div className="container">
           <div className="row justify-content-md-center">
             <div className="col col-lg-12">
-
               <div className="container">
                 <div className="row justify-content-between">
                   <div className="col-6" style={{color: "#7F56C5"}}>
@@ -102,11 +97,8 @@ class App extends Component {
                       <option value="75">75</option>
                       <option value="100">100</option>
                     </select>
-
                     <span style={{marginLeft: "30px", fontSize: "0.875rem", fontWeight: "700, 400, 700"}}>{this.state.startVal + 1}-{this.state.endVal} of {data.length}</span>
-
                     <button onClick={this.prevPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "7px"}}>Prev</button>
-
                     <button onClick={this.nextPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "3px"}}>Next</button>
                   </div>
                 </div>
