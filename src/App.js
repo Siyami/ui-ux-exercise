@@ -64,56 +64,81 @@ class App extends Component {
 
     return (
       <div>
-        items per page:
-        <select
-          onChange={this.handleChange}
-           value={this.state.dropDownValue}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="75">75</option>
-          <option value="100">100</option>
-        </select>
 
-        {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+        <nav className="navbar navbar-toggleable-md navbar-light bg-faded" style={{backgroundColor: "#282653"}}>
+          <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          {/* <a className="navbar-brand" href="#">Navbar</a> */}
 
-        <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active" style={{backgroundColor: "#7F56C5"}}>
+                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 1<span className="sr-only">(current)</span></a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 2</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#" style={{color: "#FFFFFF"}}>Nav Item 3</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-        <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
+        <div>
+          List of Awesome  |  items per page:
+          <select
+            onChange={this.handleChange}
+            value={this.state.dropDownValue}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+          </select>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Country</th>
-              <th>Street</th>
-              <th>City</th>
-              <th>State</th>
-              <th>Zip</th>
-              <th>Phone</th>
-            </tr>
-          </thead>
-          <tbody>
-            {newArr.map((row) => {
-              return (
-                <tr key={row.firstName + row.lastName}>
-                  <td>{row.number}</td>
-                  <td>{row.firstName}</td>
-                  <td>{row.lastName}</td>
-                  <td>{row.country}</td>
-                  <td>{row.address}</td>
-                  <td>{row.city}</td>
-                  <td>{row.state}</td>
-                  <td>{row.zip}</td>
-                  <td>{row.phone}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+          {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+
+          <button onClick={this.prevPage} type="button" className="btn btn-primary">Prev</button>
+
+          <button onClick={this.nextPage} type="button" className="btn btn-primary">Next</button>
+
+          <table className="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Country</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              {newArr.map((row) => {
+                return (
+                  <tr key={row.firstName + row.lastName}>
+                    <td>{row.number}</td>
+                    <td>{row.firstName}</td>
+                    <td>{row.lastName}</td>
+                    <td>{row.country}</td>
+                    <td>{row.address}</td>
+                    <td>{row.city}</td>
+                    <td>{row.state}</td>
+                    <td>{row.zip}</td>
+                    <td>{row.phone}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
       </div>
     );
   }
