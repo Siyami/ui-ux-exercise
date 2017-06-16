@@ -87,7 +87,7 @@ class App extends Component {
       const nameA = a[compareVal].toUpperCase();
       const nameB = b[compareVal].toUpperCase();
       let comparison = 0;
-      
+
       if (nameA > nameB) {
         comparison = 1;
       } else if (nameA < nameB) {
@@ -153,9 +153,12 @@ class App extends Component {
                       <option value="75">75</option>
                       <option value="100">100</option>
                     </select>
-                    <span style={{marginLeft: "30px", fontSize: "0.875rem", fontWeight: "700, 400, 700"}}>{this.state.startVal + 1}-{this.state.endVal} of {data.length}</span>
-                    <button onClick={this.prevPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "7px"}}>Prev</button>
-                    <button onClick={this.nextPage} type="button" className="btn btn-primary btn-sm button" style={{marginLeft: "3px"}}>Next</button>
+                    <span
+                      style={{marginLeft: "30px", fontSize: "0.875rem", fontWeight: "700, 400, 700"}}>
+                      {this.state.startVal + 1}-{this.state.endVal} of {data.length}
+                    </span>
+                    <i onClick={this.prevPage} className="fa fa-arrow-left fa-2x" aria-hidden="true" style={{marginLeft: "7px"}}></i>
+                    <i onClick={this.nextPage} className="fa fa-arrow-right fa-2x" aria-hidden="true" style={{marginLeft: "4px"}}></i>
                   </div>
                 </div>
               </div>
