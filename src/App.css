@@ -67,3 +67,7 @@
 i {
   color: #1DAFE9;
 }
+
+div.col-5 {
+  padding-left: 110px;
+}
