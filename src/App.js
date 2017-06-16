@@ -59,29 +59,13 @@ class App extends Component {
 
   render() {
     const newArr = [];
-    let val = this.state.sortValue;
+    let compareVal = this.state.sortValue;
 
     for (let i = this.state.startVal; i < this.state.endVal; i++) {
       newArr.push(data[i])
     }
 
     function compare(a, b) {
-      let compareVal = '';
-      if(val === 'lastName') {
-        compareVal = 'lastName';
-      }
-      else if(val === 'firstName') {
-        compareVal = 'firstName';
-      }
-      else if(val === 'country') {
-        compareVal = 'country';
-      }
-      else if(val === 'city') {
-        compareVal = 'city';
-      }
-      else if(val === 'state') {
-        compareVal = 'state';
-      }
 
       // Use toUpperCase() to ignore character casing
       const nameA = a[compareVal].toUpperCase();
