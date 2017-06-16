@@ -165,7 +165,6 @@ class App extends Component {
               <table className="table table-striped table-hover">
                 <thead className="thead" style={{backgroundColor: "#CACBCE"}}>
                   <tr>
-                    {/* <th>#</th> */}
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Country</th>
@@ -180,7 +179,6 @@ class App extends Component {
                   {newArr.map((row) => {
                     return (
                       <tr key={row.firstName + row.lastName}>
-                        {/* <td>{row.number}</td> */}
                         <td>{row.firstName}</td>
                         <td>{row.lastName}</td>
                         <td>{row.country}</td>
