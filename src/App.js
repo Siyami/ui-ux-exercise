@@ -10,23 +10,14 @@ class App extends Component {
       dropDownValue: 10,
       addValue: 0,
       startVal: 0,
-      endVal: 10
+      endVal: 10,
+      sortValue: 'lastName'
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
-  }
-
-  handleChange(event) {
-    let nextValue = parseInt(event.target.value);
-    let newEndVal = nextValue;
-
-    if(newEndVal < this.state.startVal) {
-      this.setState({ startVal: 0 })
-    }
-
-    this.setState({ dropDownValue: nextValue, endVal: newEndVal });
+    this.handleSort = this.handleSort.bind(this);
   }
 
   nextPage() {
@@ -49,12 +40,63 @@ class App extends Component {
     }
   }
 
+  handleChange(event) {
+    let nextValue = parseInt(event.target.value);
+    let newEndVal = nextValue;
+
+    if(newEndVal < this.state.startVal) {
+      this.setState({ startVal: 0 })
+    }
+
+    this.setState({ dropDownValue: nextValue, endVal: newEndVal });
+  }
+
+  handleSort(event) {
+    let nextValue = event.target.value;
+
+    this.setState({ sortValue: nextValue })
+  }
+
   render() {
     const newArr = [];
+    let val = this.state.sortValue;
 
     for (let i = this.state.startVal; i < this.state.endVal; i++) {
       newArr.push(data[i])
     }
+
+    function compare(a, b) {
+      let compareVal = '';
+      if(val === 'lastName') {
+        compareVal = 'lastName';
+      }
+      else if(val === 'firstName') {
+        compareVal = 'firstName';
+      }
+      else if(val === 'country') {
+        compareVal = 'country';
+      }
+      else if(val === 'city') {
+        compareVal = 'city';
+      }
+      else if(val === 'state') {
+        compareVal = 'state';
+      }
+
+      // Use toUpperCase() to ignore character casing
+      const nameA = a[compareVal].toUpperCase();
+      const nameB = b[compareVal].toUpperCase();
+      let comparison = 0;
+      
+      if (nameA > nameB) {
+        comparison = 1;
+      } else if (nameA < nameB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
+
+    newArr.sort(compare);
 
     return (
       <div>
@@ -82,7 +124,21 @@ class App extends Component {
               <div className="container">
                 <div className="row justify-content-between">
                   <div className="col-6" style={{color: "#7F56C5"}}>
-                    <p style={{fontSize: "1rem", fontWeight: "400, 600"}}>List of Awesome <span  className="span">Sort by:</span></p>
+                    <p style={{fontSize: "1rem", fontWeight: "400, 600"}}><span style={{marginRight: "5px"}}>List of Awesome</span>
+                      <span  className="span">Sort by:
+                        <select
+                          onChange={this.handleSort}
+                          value={this.state.sortValue}
+                          className="select"
+                          style={{marginLeft: "5px"}}>
+                          <option value="lastName">Last Name</option>
+                          <option value="firstName">First Name</option>
+                          <option value="country">Country</option>
+                          <option value="city">City</option>
+                          <option value="state">State</option>
+                        </select>
+                      </span>
+                    </p>
                   </div>
                   <div className="col-5" style={{color: "#7F56C5", fontSize: ".75rem", fontWeight: "400, 600"}}>
                     <span style={{paddingRight: "5px"}}>items per page:</span>
